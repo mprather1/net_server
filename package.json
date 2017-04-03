@@ -1,0 +1,20 @@
+{
+  "name": "net_server",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "PORT=8000 NODE_ENV=development HOSTNAME=shintech.ninja nodemon build/server",
+    "build": "babel --watch -D -d build/ src/",
+    "prepublish": "npm run build"
+  },
+  "author": "Michael Prather",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "babel-preset-latest": "^6.24.0"
+  },
+  "dependencies": {
+    "winston-color": "^1.0.0"
+  }
+}
