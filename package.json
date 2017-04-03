@@ -1,7 +1,7 @@
 {
   "name": "net_server",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "build/server.js",
   "license": "MIT",
   "scripts": {
     "start": "PORT=8000 NODE_ENV=development HOSTNAME=shintech.ninja nodemon build/server",
