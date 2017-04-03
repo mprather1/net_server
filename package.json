@@ -4,7 +4,7 @@
   "main": "build/server.js",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=8000 NODE_ENV=development HOSTNAME=shintech.ninja nodemon build/server",
+    "start": "PORT=8000 NODE_ENV=development HOSTNAME=shintech.ninja nodemon build/server.js",
     "build": "babel --watch -D -d build/ src/",
     "prepublish": "npm run build"
   },
@@ -15,6 +15,7 @@
     "babel-preset-latest": "^6.24.0"
   },
   "dependencies": {
+    "duplex-emitter": "^2.1.2",
     "winston-color": "^1.0.0"
   }
 }
