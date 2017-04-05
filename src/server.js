@@ -5,7 +5,7 @@ import chalk from 'chalk'
 import json_data from './data.json'
 
 const server = net.createServer()
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 55445
 const hostname = process.env.HOSTNAME
 
 server.on('listening', () => {

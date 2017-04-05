@@ -1,10 +1,10 @@
 {
   "name": "net_server",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "build/server.js",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=8000 NODE_ENV=development HOSTNAME=shintech.ninja nodemon build/server.js",
+    "start": "PORT=55445 NODE_ENV=development HOSTNAME=shintech.ninja nodemon build/server.js",
     "build": "babel -D -d build/ src/",
     "babel:watch": "babel --watch -D -d build/ src/",
     "prepublish": "npm run build"
