@@ -2,6 +2,7 @@ import net from 'net'
 import logger from 'winston-color'
 import DuplexEmitter from 'duplex-emitter'
 import chalk from 'chalk'
+import json_data from './data.json'
 
 const server = net.createServer()
 const port = process.env.PORT || 8000
@@ -15,24 +16,24 @@ server.on('connection', handleConnection)
 
 server.listen(port, hostname)
 
-const data = {
-  "id": 1,
-  "name": "testName"
-}
-
 function handleConnection (socket) {
-  logger.info('client connected')
+  logger.info('client connected...')
+  
   socket.on('error', handleError)
   socket.on('close', handleClose)
   
-  const remoteEmitter = DuplexEmitter(socket)
-  remoteEmitter.emit('msg', data)
+  const emitter = DuplexEmitter(socket)
+  emitter.emit('json-data', json_data)
+  emitter.on('complete', (data) => {
+    emitter.emit('confirmaiton', 'confirmed received...')
+  logger.info(chalk.cyan(data))
+  })
   
   function handleError (err) {
     logger.info("error:", err.message)
   }
   
   function handleClose () {
-    logger.warn('connection closed')
+    logger.warn('connection closed...')
   }
 }
