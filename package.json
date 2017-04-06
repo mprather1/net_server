@@ -1,6 +1,6 @@
 {
   "name": "net_server",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "build/server.js",
   "license": "MIT",
   "scripts": {

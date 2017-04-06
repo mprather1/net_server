@@ -12,14 +12,14 @@ const options = {
   packageName: pkg.name
 }
 
-const {server, packageName, hostname, port} = options
+const {server, packageName, hostname, port, emitter} = options
 
 server.on('listening', () => {
   logger.info(`${chalk.bgBlack.cyan(packageName)} listening on port ${port}...`)
 })
 
-server.on('connection', (data) => {
-  handleConnection(data)
+server.on('connection', (socket) => {
+  handleConnection(socket)
 })
 
 server.listen(port, hostname)
@@ -41,7 +41,6 @@ function handleConnection (socket) {
   emitter.on('create', (name) => {
     logger.info(`model created on ${chalk.bgBlack.green(name)}`)
   })
-  
   emitter.emit('json-data', json_data)
   
   emitter.on('complete', (data) => {
