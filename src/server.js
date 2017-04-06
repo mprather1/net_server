@@ -28,7 +28,7 @@ function handleConnection (socket) {
   const emitter = DuplexEmitter(socket)
   
   socket.on('error', handleError)
-  
+
   emitter.once('connected', (data) => {
     emitter.emit('connected', packageName)
     logger.info(chalk.bgBlack.green(data), 'connected...')
@@ -36,6 +36,10 @@ function handleConnection (socket) {
     socket.on('close', (event) => {
       handleClose(event, data)
     })
+  })
+  
+  emitter.on('create', (name) => {
+    logger.info(`model created on ${chalk.bgBlack.green(name)}`)
   })
   
   emitter.emit('json-data', json_data)
